@@ -4,8 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Invoice extends Model
 {
     use HasFactory;
+
+    //    Invoice belongsTo InvoiceItem
+    public function items(): BelongsTo
+    {
+        return $this->belongsTo(InvoiceItem::class);
+    }
 }
