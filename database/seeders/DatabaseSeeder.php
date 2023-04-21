@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->create_user_with_role('SuperAdmin', 'Super Admin', 'superadmin@mail.com');
         $this->create_user_with_role('Communication', 'Communication Team', 'communication@mail.com');
         $teacher = $this->create_user_with_role('Teacher', 'Teacher', 'teacher@mail.com');
+        $teacher = $this->create_user_with_role('Leads', 'Leads', 'lead@mail.com');
 
 
         // Make Leads for testing

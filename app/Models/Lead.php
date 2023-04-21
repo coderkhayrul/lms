@@ -10,6 +10,12 @@ class Lead extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'phone',
+        'email',
+    ];
+
     //    Lead hasMany Notes
     public function notes(): HasMany
     {
