@@ -17,6 +17,9 @@
                 <div class="flex">
                     <a class="me-2" href="{{ route('leads.show',$lead->id) }}">@include('components.icons.show')</a>
                     <a class="me-2" href="{{ route('leads.edit',$lead->id) }}">@include('components.icons.edit')</a>
+                    <form onsubmit="return confirm('are you sure?')" wire:submit.prevent="leadDelete({{ $lead->id }})">
+                        <button type="submit">@include('components.icons.delete')</button>
+                    </form>
                 </div>
             </td>
         </tr>

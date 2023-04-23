@@ -13,4 +13,13 @@ class LeadIndex extends Component
         $leads = Lead::paginate(10);
         return view('livewire.lead-index', compact('leads'));
     }
+
+    public function leadDelete($id)
+    {
+        $lead = Lead::find($id);
+        $lead->delete();
+        flash()->addSuccess('Lead Deleted Successfully.');
+        return back();
+    }
+
 }
