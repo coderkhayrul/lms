@@ -62,8 +62,7 @@ class DatabaseSeeder extends Seeder
         if ($type == 'SuperAdmin') {
             $role->givePermissionTo(Permission::all());
         }
-
-        if ($type == 'Leads') {
+        elseif ($type == 'Leads') {
             $role->givePermissionTo(['lead-management']);
         }
 
