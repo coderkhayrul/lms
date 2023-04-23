@@ -3,20 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LeadController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware(['role_or_permission:SuperAdmin|Leads|lead-management']);
-    }
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        permission_check('lead-management');
         return view('leads.index');
     }
 
@@ -49,7 +45,7 @@ class LeadController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('leads.edit', compact('id'));
     }
 
     /**
