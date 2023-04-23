@@ -22,12 +22,16 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-
+        // Make Permission
+        $defaultPermission = ['lead-management', 'create-admin'];
+        foreach ($defaultPermission as $permission) {
+            Permission::create(['name' => $permission]);
+        }
         // Make User Role User
         $this->create_user_with_role('SuperAdmin', 'Super Admin', 'superadmin@mail.com');
         $this->create_user_with_role('Communication', 'Communication Team', 'communication@mail.com');
+        $this->create_user_with_role('Leads', 'Leads', 'lead@mail.com');
         $teacher = $this->create_user_with_role('Teacher', 'Teacher', 'teacher@mail.com');
-        $teacher = $this->create_user_with_role('Leads', 'Leads', 'lead@mail.com');
 
 
         // Make Leads for testing
@@ -47,20 +51,23 @@ class DatabaseSeeder extends Seeder
 
     // Custom Private Function
     private function create_user_with_role($type, $name, $email){
+        $role = Role::create(['name' => $type]);
+
         $user = User::create([
             'name' => $name,
             'email' => $email,
             'password' => Hash::make('password'),
         ]);
 
-        $role = Role::create(['name' => $type]);
-        $user->assignRole($role);
-
         if ($type == 'SuperAdmin') {
-            $permission = Permission::create(['name' => 'create-admin']);
-            $permission->assignRole($role);
-            $user->givePermissionTo($permission);
+            $role->givePermissionTo(Permission::all());
         }
+
+        if ($type == 'Leads') {
+            $role->givePermissionTo(['lead-management']);
+        }
+
+        $user->assignRole($role);
         return $user;
     }
 }
