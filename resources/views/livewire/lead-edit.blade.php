@@ -16,10 +16,8 @@
             @error('email') <span class="error">{{ $message }}</span> @enderror
         </div>
 
-        <div wire:loading class="flex align-middle">
-            @include('components.icons.loading')
-            Loading...
-        </div>
+        <!-- Loading State -->
+        @include('components.icons.loading')
         <button wire:loading.remove type="submit" class="p-3 border bg-green-500 text-white rounded">
             Update
         </button>
