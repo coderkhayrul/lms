@@ -1,25 +1,39 @@
 <div>
-    <form wire:submit.prevent="submitForm">
-        <div class="mb-4">
-            <lable class="lms-lable">Name</lable>
-            <input wire:model="name" class="lms-input" type="text" name="name">
-            @error('name') <span class="error">{{ $message }}</span> @enderror
+    <form wire:submit.prevent="submitForm" class="mb-4">
+        <div class="flex -mx-4 mb-4">
+            <div class="flex-1 mb-4">
+                <lable class="lms-lable">Name</lable>
+                <input wire:model.lazy="name" class="lms-input w-full pr-2" type="text" name="name">
+                @error('name') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            <div class="flex-1 mb-4">
+                <lable class="lms-lable">Phone</lable>
+                <input wire:model.lazy="phone" class="lms-input w-full" type="text" name="phone">
+                @error('phone') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            <div class="flex-1 mb-4">
+                <lable class="lms-lable">Email</lable>
+                <input wire:model.lazy="email" class="lms-input w-full" type="email" name="email">
+                @error('email') <span class="error">{{ $message }}</span> @enderror
+            </div>
         </div>
-        <div class="mb-4">
-            <lable class="lms-lable">Phone</lable>
-            <input wire:model="phone" class="lms-input" type="text" name="phone">
-            @error('phone') <span class="error">{{ $message }}</span> @enderror
-        </div>
-        <div class="mb-4">
-            <lable class="lms-lable">Email</lable>
-            <input wire:model="email" class="lms-input" type="email" name="email">
-            @error('email') <span class="error">{{ $message }}</span> @enderror
-        </div>
-
         <!-- Loading State -->
         @include('components.icons.loading')
-        <button wire:loading.remove type="submit" class="p-3 border bg-green-500 text-white rounded">
+        <button wire:loading.remove type="submit" class="lms-button">
             Update
         </button>
+    </form>
+    <h3 class="font-bold text-lg">Notes</h3>
+    @forelse($notes as $note)
+        <p class="text-blue-500">{{$note->description}}</p>
+    @empty
+        <h2>Note Not Found !</h2>
+    @endforelse
+    <br>
+    <form wire:submit.prevent="addNote">
+        <div class="mb-4">
+            <textarea wire:model.lazy="note" name="description" class="lms-input w-full"></textarea>
+        </div>
+    <button type="submit" class="lms-button">Add New</button>
     </form>
 </div>

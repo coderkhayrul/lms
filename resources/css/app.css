@@ -6,7 +6,10 @@
     @apply uppercase block font-bold mb-2 text-gray-700;
 }
 .lms-input{
-    @apply block w-full border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+    @apply border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+}
+.lms-button{
+    @apply p-2 border bg-green-500 text-white rounded;
 }
 .error{
     @apply block text-red-500 text-sm font-bold mt-2;

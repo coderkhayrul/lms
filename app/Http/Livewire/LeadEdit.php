@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Lead;
+use App\Models\Note;
 use Livewire\Component;
 
 class LeadEdit extends Component
@@ -11,6 +12,7 @@ class LeadEdit extends Component
     public $name;
     public $email;
     public $phone;
+    public $note;
 
     public function mount(){
         $lead = Lead::findOrFail($this->lead_id);
@@ -26,7 +28,9 @@ class LeadEdit extends Component
     public function render()
     {
         $lead = Lead::findOrFail($this->lead_id);
-        return view('livewire.lead-edit', compact('lead'));
+        return view('livewire.lead-edit', [
+            'notes' => $lead->notes
+        ]);
     }
 
     public function submitForm(){
@@ -40,6 +44,15 @@ class LeadEdit extends Component
         $lead->update();
         flash()->addSuccess('Lead updated successfully.');
 //        return redirect()->route('leads.index');
+        return redirect()->back();
+    }
+    public function addNote(){
+        $note = new Note();
+        $note->description = $this->note;
+        $note->lead_id = $this->lead_id;
+        $this->note = '';
+        $note->save();
+        flash()->addSuccess('Note added successfully.');
         return redirect()->back();
     }
 }

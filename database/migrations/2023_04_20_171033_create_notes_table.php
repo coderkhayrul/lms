@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
             $table->text('description');
-            $table->unsignedBigInteger('curricula_id');
-            $table->unsignedBigInteger('exam_id');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('lead_id');
+            $table->unsignedBigInteger('curricula_id')->nullable();
+            $table->unsignedBigInteger('exam_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('lead_id')->nullable();
             $table->timestamps();
 
             $table->foreign('curricula_id')->references('id')->on('curricula')->onDelete('cascade');
