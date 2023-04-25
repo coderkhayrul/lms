@@ -25,11 +25,11 @@
     </form>
     <h3 class="font-bold text-lg">Notes</h3>
     @forelse($notes as $note)
-        <p class="text-blue-500">{{$note->description}}</p>
+        <p class="p-2 border border-gray-200 mb-2 bg-gray-100">{{$note->description}}</p>
     @empty
         <h2>Note Not Found !</h2>
     @endforelse
-    <br>
+    <button class="mb-4">Add New Note</button>
     <form wire:submit.prevent="addNote">
         <div class="mb-4">
             <textarea wire:model.lazy="note" name="description" class="lms-input w-full"></textarea>

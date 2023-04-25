@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         // Make Permission
-        $defaultPermission = ['lead-management', 'create-admin'];
+        $defaultPermission = ['lead-management', 'create-admin', 'user-management'];
         foreach ($defaultPermission as $permission) {
             Permission::create(['name' => $permission]);
         }

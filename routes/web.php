@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,7 @@ Route::middleware('auth')->group(function () {
 
     // Resource Route
     Route::resource('leads', LeadController::class);
+    Route::resource('users', UserController::class);
 });
 
 require __DIR__.'/auth.php';
