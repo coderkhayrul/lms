@@ -11,7 +11,11 @@
             <tr>
                 <td class="border px-4 py-2">{{ $user->name }}</td>
                 <td class="border px-4 py-2">{{ $user->email }}</td>
-                <td class="border px-4 py-2">Role Name</td>
+                <td class="border px-4 py-2">
+                    @foreach($user->getRoleNames() as $role)
+                        <span class="px-2 py-1 bg-gray-200 rounded-full text-sm">{{ $role }}</span>
+                    @endforeach
+                </td>
                 <td class="border px-4 py-2 text-center">{{ date('F j ,Y', strtotime($user->created_at)) }}</td>
                 <td class="border px-4 py-2 text-center">
                     <div class="flex">
