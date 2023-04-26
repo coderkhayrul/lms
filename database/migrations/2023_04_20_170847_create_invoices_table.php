@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('due_date');
-            $table->dateTime('paid_date');
+            $table->dateTime('due_date')->nullable();
+            $table->dateTime('paid_date')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

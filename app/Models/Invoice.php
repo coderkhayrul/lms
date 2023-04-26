@@ -10,6 +10,8 @@ class Invoice extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     //    Invoice belongsTo InvoiceItem
     public function items(): BelongsTo
     {

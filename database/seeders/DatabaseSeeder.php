@@ -39,9 +39,10 @@ class DatabaseSeeder extends Seeder
 
         // Create Course
         $course = Course::create([
-            'name' => 'PHP',
+            'name' => 'Laravel',
             'description' => 'PHP is a server scripting language, and a powerful tool for making dynamic and interactive Web pages.',
             'image' => 'https://www.php.net/images/logos/new-php-logo.svg',
+            'price' => 5000,
             'user_id' => $teacher->id,
         ]);
 

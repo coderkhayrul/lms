@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('invoice_items', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('invoice_id');
             $table->string('name');
             $table->float('price');
             $table->unsignedBigInteger('quantity');
-            $table->unsignedBigInteger('invoice_id');
             $table->timestamps();
 
             $table->foreign('invoice_id')->references('id')->on('invoices')->onDelete('cascade');
