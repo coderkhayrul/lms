@@ -25,9 +25,9 @@
                 @endif
                 @if(!empty($selectedCourse))
                     <h3 class="mb-2">Price: ${{ number_format($selectedCourse->price) }}</h3>
-{{--                    <div class="mb-4">--}}
-{{--                        <input type="number" step=".01" class="lms-input w-full" placeholder="Payment Now">--}}
-{{--                    </div>--}}
+                    <div class="mb-4">
+                        <input wire:model.lazy="payment" type="number" step=".01" max="{{ number_format($selectedCourse->price) }}" class="lms-input w-full" placeholder="Payment Now">
+                    </div>
                     <!-- Loading State -->
                     @include('components.icons.loading')
                     <button wire:loading.remove type="submit" class="lms-button">

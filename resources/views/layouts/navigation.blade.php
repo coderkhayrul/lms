@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('admission')" :active="request()->routeIs('admission')">
                         {{ __('Admission') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('invoice-index')" :active="request()->routeIs('invoice-index')">
+                        {{ __('Invoices') }}
+                    </x-nav-link>
                     @can('lead-management')
                     <x-nav-link :href="route('leads.index')" :active="request()->routeIs('leads.index')">
                         {{ __('Leads') }}
