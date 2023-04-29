@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdmissionController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -36,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('leads', LeadController::class);
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
+    Route::resource('course', CourseController::class);
 
 //    Admission Route List
     Route::get('/admission', [AdmissionController::class, 'admission'])->name('admission');
