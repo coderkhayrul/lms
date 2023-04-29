@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Course;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class CourseCreate extends Component
@@ -10,6 +12,12 @@ class CourseCreate extends Component
     public $description;
     public $price;
     public $status;
+    public $time;
+    public $end_date;
+    public $sundays = [];
+    public $selectedDays = [];
+
+
 
     public $days = [
         'Sunday',
@@ -26,6 +34,7 @@ class CourseCreate extends Component
         $this->name = 'First Name';
         $this->description = 'Description';
         $this->price = 500;
+//        $this->end_date = Carbon::now()->format('Y-m-d');
     }
 
     protected $rules = [
@@ -42,6 +51,11 @@ class CourseCreate extends Component
     public function formSubmit()
     {
         $this->validate();
-        dd('Form submitted.');
+        $course = Course::create([
+            'name' => $this->name,
+            'description' => $this->description,
+            'price' => $this->price,
+            'user_id' => auth()->user()->id,
+        ]);
     }
 }
