@@ -21,4 +21,15 @@ class curriculum extends Model
     {
         return $this->hasMany(Attendance::class);
     }
+    //    has notes
+    public function notes(): HasMany
+    {
+        return $this->hasMany(Note::class , 'curricula_note', 'curricula_id', 'note_id');
+    }
+
+    //    has course
+    public function course(): HasMany
+    {
+        return $this->hasMany(Course::class);
+    }
 }

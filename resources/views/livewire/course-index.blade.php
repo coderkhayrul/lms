@@ -10,13 +10,13 @@
         @foreach ($courses as $course)
             <tr>
                 <td class="border px-4 py-2">{{ $course->name }}</td>
-                <td class="border px-4 py-2">{{ $course->description }}</td>
+                <td class="border px-4 py-2">{{ Str::limit($course->description, 150 , '...') }}</td>
                 <td class="border px-4 py-2">{{ $course->price }}</td>
                 <td class="border px-4 py-2 text-center">{{ date('F j ,Y', strtotime($course->created_at)) }}</td>
                 <td class="border px-4 py-2 text-center">
                     <div class="flex">
-                        <a class="me-2" href="{{ route('leads.show',$course->id) }}">@include('components.icons.show')</a>
-                        <a class="me-2" href="{{ route('leads.edit',$course->id) }}">@include('components.icons.edit')</a>
+                        <a class="me-2" href="{{ route('course.show',$course->id) }}">@include('components.icons.show')</a>
+                        <a class="me-2" href="{{ route('course.edit',$course->id) }}">@include('components.icons.edit')</a>
                         <form onsubmit="return confirm('are you sure?')" wire:submit.prevent="courseDelete({{ $course->id }})">
                             <button type="submit">@include('components.icons.delete')</button>
                         </form>

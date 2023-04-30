@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -20,5 +21,9 @@ class CourseController extends Controller
     }
     public function edit(){
         return view('courses.edit');
+    }
+    public function show($id){
+        $course = Course::with('curriculums')->where('id', $id)->first();
+        return view('courses.show', compact('course'));
     }
 }

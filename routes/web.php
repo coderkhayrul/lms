@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('course', CourseController::class);
+    Route::resource('curriculum', CourseController::class);
 
 //    Admission Route List
     Route::get('/admission', [AdmissionController::class, 'admission'])->name('admission');
