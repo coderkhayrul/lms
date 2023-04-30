@@ -35,11 +35,12 @@ class DatabaseSeeder extends Seeder
 
 
         // Make Leads for testing
-        Lead::factory(50)->create();
+        Lead::factory(5)->create();
 
         // Create Course
         $course = Course::create([
             'name' => 'Laravel',
+            'slug' => 'laravel',
             'description' => 'PHP is a server scripting language, and a powerful tool for making dynamic and interactive Web pages.',
             'image' => 'https://www.php.net/images/logos/new-php-logo.svg',
             'price' => 5000,
@@ -47,7 +48,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Create Curriculum
-        curriculum::factory(10)->create();
+        curriculum::factory(2)->create();
     }
 
     // Custom Private Function

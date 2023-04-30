@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class curriculum extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
     //    has homeworks
     public function homeworks(): HasMany
     {
